@@ -1,0 +1,49 @@
+.toast__wrapper {
+  position: relative;
+}
+.toast__div {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 1500;
+}
+.toast {
+  border: none;
+  min-width: 20em;
+  margin-top: 2em;
+  margin-right: 2em;
+  background-color: #fff;
+}
+.toast .toast-header {
+  border-bottom: none;
+  background-color: inherit;
+  color: inherit;
+  opacity: 0.6;
+}
+.toast .toast-header .close {
+  color: inherit;
+  opacity: 0.9;
+}
+.toast.primary {
+  background-color: #06c;
+  color: #fff;
+}
+.toast.success {
+  background-color: #21b854;
+  color: #fff;
+}
+.toast.warning {
+  background-color: #ebb61c;
+  color: #fff;
+}
+.toast.info {
+  background-color: darkgray;
+  color: #fff;
+}
+.toast.danger {
+  background-color: #d81e18;
+  color: #fff;
+}
+.toast:not(:last-child) {
+  margin-bottom: 0em;
+}

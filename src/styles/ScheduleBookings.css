@@ -1,0 +1,40 @@
+.Picker-header {
+  text-align: left;
+}
+
+.color-green {
+  color: #21b854;
+}
+
+.Card-body {
+  text-align: left;
+  padding-left: 15%;
+}
+
+.mrg-btm {
+  margin-bottom: 15px;
+}
+
+.mrg-right {
+  margin-right: 10px;
+}
+
+.mrg-top {
+  margin-top: 20px;
+}
+
+.sm-mrg-top {
+  margin-top: 10px;
+}
+
+.alert {
+  color: #d81e18;
+}
+
+.full {
+  width: 100%;
+}
+
+.center {
+  text-align: center;
+}

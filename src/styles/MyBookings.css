@@ -1,0 +1,28 @@
+.details {
+  text-align: left;
+  padding-left: 15%;
+}
+
+.Booking-delete-btn {
+  text-align: right;
+  position: absolute;
+  right: 50px;
+  top: 70px;
+}
+
+.Show-whiteboard-btn {
+  text-align: right;
+  position: absolute;
+  right: 50px;
+  top: 115px;
+}
+
+.Metamask-notice {
+  color: #d81e18;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.info-text {
+  color: #17a2b8;
+}
