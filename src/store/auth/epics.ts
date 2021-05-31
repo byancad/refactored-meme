@@ -6,7 +6,7 @@ import {
   doneLoading,
   signInSuccess,
   signUpFailure,
-  signInFailure,
+  signInFailure
 } from "./actions";
 import { isOfType } from "typesafe-actions";
 import { of, from, merge } from "rxjs";
@@ -15,7 +15,7 @@ import { userDetails } from "../user/actions";
 import { addNotification } from "../notification/actions";
 import {
   NotificationType,
-  NotificationMessage,
+  NotificationMessage
 } from "../notification/reducers";
 
 export const signUpEpic: Epic<AllActions, AllActions, InitialState> = (
@@ -23,22 +23,22 @@ export const signUpEpic: Epic<AllActions, AllActions, InitialState> = (
 ) =>
   action$.pipe(
     filter(isOfType(AuthActionTypes.SIGN_UP)),
-    switchMap((action) => {
+    switchMap(action => {
       return from(signUp(action.payload)).pipe(
         mergeMap(() => [
           doneLoading(),
           addNotification({
             message: NotificationMessage.SIGN_UP_SUCCESS,
-            type: NotificationType.SUCCESS,
-          }),
+            type: NotificationType.SUCCESS
+          })
         ]),
-        catchError((error) =>
+        catchError(error =>
           merge(
             of(signUpFailure(error)),
             of(
               addNotification({
                 message: NotificationMessage.SIGN_UP_FAILURE,
-                type: NotificationType.DANGER,
+                type: NotificationType.DANGER
               })
             )
           )
@@ -52,23 +52,23 @@ export const signInEpic: Epic<AllActions, AllActions, InitialState> = (
 ) =>
   action$.pipe(
     filter(isOfType(AuthActionTypes.SIGN_IN)),
-    switchMap((action) => {
+    switchMap(action => {
       return from(signIn(action.payload)).pipe(
-        mergeMap((data) => [
+        mergeMap(data => [
           signInSuccess(data),
           addNotification({
             message: NotificationMessage.SIGN_IN_SUCCESS,
-            type: NotificationType.SUCCESS,
+            type: NotificationType.SUCCESS
           }),
-          userDetails(),
+          userDetails()
         ]),
-        catchError((error) =>
+        catchError(error =>
           merge(
             of(signInFailure(error)),
             of(
               addNotification({
                 message: NotificationMessage.SIGN_IN_FAILURE,
-                type: NotificationType.DANGER,
+                type: NotificationType.DANGER
               })
             )
           )
