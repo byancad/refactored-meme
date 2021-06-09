@@ -11,7 +11,7 @@ type BuildingCardProps = {
 export const BuildingCard: React.FC<BuildingCardProps> = ({
   building,
   setSelectedBuilding,
-  fetchBuildingDetails,
+  fetchBuildingDetails
 }) => {
   return (
     <Card bg="light" key={building.id} text="dark" className="mb-2">
