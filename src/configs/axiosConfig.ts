@@ -5,10 +5,10 @@ const BASE_URL = "http://localhost:3000/";
 const TOKEN_ID = "musical-octo-spoon-token";
 
 const instance = axios.create({
-  baseURL: BASE_URL
+  baseURL: BASE_URL,
 });
 
-instance.defaults.headers.common["Authorization"] = `Bearer ${
+instance.defaults.headers.common["Authorization"] = `${
   TOKEN_ID ? localStorage.getItem(TOKEN_ID) : ""
 }`;
 
@@ -19,7 +19,7 @@ export const setTokenInLocalStorage = async (value: string) => {
 
 export const setTokenToAxiosHeader = async () => {
   let token = await localStorage.getItem(TOKEN_ID);
-  instance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+  instance.defaults.headers.common["Authorization"] = `${token}`;
 };
 
 export default instance;
