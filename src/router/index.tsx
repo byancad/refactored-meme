@@ -3,11 +3,12 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Redirect,
+  Redirect
 } from "react-router-dom";
 import { App } from "../App";
 import { MyBookings } from "../pages/MyBookings";
 import { ScheduleBookings } from "../pages/ScheduleBookings";
+import { PlaidTokens } from "../pages/PlaidTokens";
 
 export const AppRouter: React.FC = () => {
   return (
@@ -15,23 +16,8 @@ export const AppRouter: React.FC = () => {
       <Router>
         <App>
           <Switch>
-            <Route
-              exact
-              path="/"
-              render={() => <Redirect to="/my-bookings" />}
-            />
-            <Route
-              path="/my-bookings"
-              component={MyBookings}
-              key="my-bookings"
-              exact
-            />
-            <Route
-              path="/schedule-bookings"
-              component={ScheduleBookings}
-              key="schedule-bookings"
-              exact
-            />
+            <Route exact path="/" render={() => <Redirect to="/" />} />
+            <Route path="/plaid" component={PlaidTokens} key="plaid" exact />
           </Switch>
         </App>
       </Router>

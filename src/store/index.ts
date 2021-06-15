@@ -15,6 +15,7 @@ import { BookingEpics } from "./booking/epics";
 import { BuildingEpics } from "./building/epics";
 import { UserEpics } from "./user/epics";
 import { NotificationEpics } from "./notification/epics";
+import { TokenEpics } from "./token/epics";
 
 import { AuthActions } from "./auth/actions";
 import { BookingActions } from "./booking/actions";
@@ -94,7 +95,8 @@ const epics = combineEpics(
   ...BookingEpics,
   ...BuildingEpics,
   ...UserEpics,
-  ...NotificationEpics
+  ...NotificationEpics,
+  ...TokenEpics
 );
 
 ///// setup store //////

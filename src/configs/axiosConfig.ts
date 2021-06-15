@@ -1,11 +1,11 @@
 import axios from "axios";
 
 // these should be in a config file
-const BASE_URL = "http://ec2-3-17-36-231.us-east-2.compute.amazonaws.com";
+const BASE_URL = "http://localhost:3000/";
 const TOKEN_ID = "musical-octo-spoon-token";
 
 const instance = axios.create({
-  baseURL: BASE_URL,
+  baseURL: BASE_URL
 });
 
 instance.defaults.headers.common["Authorization"] = `Bearer ${
