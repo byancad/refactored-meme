@@ -3,11 +3,9 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
-  Redirect
+  Redirect,
 } from "react-router-dom";
 import { App } from "../App";
-import { MyBookings } from "../pages/MyBookings";
-import { ScheduleBookings } from "../pages/ScheduleBookings";
 import { PlaidTokens } from "../pages/PlaidTokens";
 
 export const AppRouter: React.FC = () => {

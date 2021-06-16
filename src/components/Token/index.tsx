@@ -2,31 +2,28 @@ import React, {
   useEffect,
   useCallback,
   useState,
-  FunctionComponent
+  FunctionComponent,
 } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { TokenInitialState } from "../../store/token/reducers";
-import { InitialState } from "../../store/index";
+import { useDispatch } from "react-redux";
 import { getLinkToken } from "../../store/token/actions";
+import { useTokenState } from "../../store/hooks";
 
 import {
   usePlaidLink,
   PlaidLinkOptions,
-  PlaidLinkOnSuccess
+  PlaidLinkOnSuccess,
 } from "react-plaid-link";
 type LinkTokenProps = {};
 
 export const LinkToken: React.FC<LinkTokenProps> = () => {
-  const tokenState = useSelector<InitialState, TokenInitialState>(
-    state => state.token
-  );
+  const tokenState = useTokenState();
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getLinkToken());
   }, [dispatch]);
 
-  const token = tokenState.linkToken || "";
+  const token = tokenState.linkToken;
   const onSuccess = useCallback<PlaidLinkOnSuccess>(
     (public_token, metadata) => {
       // send public_token to server
@@ -36,7 +33,7 @@ export const LinkToken: React.FC<LinkTokenProps> = () => {
 
   const config: PlaidLinkOptions = {
     token,
-    onSuccess
+    onSuccess,
     // onExit
     // onEvent
   };
@@ -47,13 +44,11 @@ export const LinkToken: React.FC<LinkTokenProps> = () => {
     <div>
       Link Token:{tokenState.linkToken}
       <div>
-        {tokenState && tokenState.linkToken && (
-          <div>
-            <button onClick={() => open()} disabled={!token}>
-              Connect a bank account
-            </button>
-          </div>
-        )}
+        <div>
+          <button onClick={() => open()} disabled={!token}>
+            Connect a bank account
+          </button>
+        </div>
       </div>
     </div>
   );
