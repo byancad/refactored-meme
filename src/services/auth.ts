@@ -26,7 +26,7 @@ export async function signIn(
   authentiateDto: AuthenticateDto
 ): Promise<SignInResponse> {
   const response = await axiosConfig.post("/users/signin", authentiateDto);
-  await setTokenInLocalStorage(response.data.jwt);
+  await setTokenInLocalStorage(response.headers.authorization);
   await setTokenToAxiosHeader();
   return response.data;
 }
