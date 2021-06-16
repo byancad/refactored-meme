@@ -49,7 +49,7 @@ export const LinkToken: React.FC<LinkTokenProps> = () => {
       <div>
         {tokenState && tokenState.linkToken && (
           <div>
-            <button onClick={() => open()} disabled={false}>
+            <button onClick={() => open()} disabled={!token}>
               Connect a bank account
             </button>
           </div>
