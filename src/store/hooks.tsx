@@ -2,9 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { InitialState } from "../store";
 import { AuthInitialState } from "../store/auth/reducers";
-import { BookingInitialState } from "./booking/reducers";
-import { BuildingInitialState } from "./building/reducers";
 import { UserInitialState } from "./user/reducers";
+import { TokenInitialState } from "./token/reducers";
 
 export function useAuthState() {
   const auth = useSelector<InitialState, AuthInitialState>(
@@ -22,18 +21,10 @@ export function useUserState() {
   return user;
 }
 
-export function useBuildingState() {
-  const building = useSelector<InitialState, BuildingInitialState>(
-    (state) => state.building
+export function useTokenState() {
+  const tokenState = useSelector<InitialState, TokenInitialState>(
+    (state) => state.token
   );
 
-  return building;
-}
-
-export function useBookingState() {
-  const booking = useSelector<InitialState, BookingInitialState>(
-    (state) => state.booking
-  );
-
-  return booking;
+  return tokenState;
 }
