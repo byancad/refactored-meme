@@ -1,16 +1,41 @@
 import { Action, ActionCreator } from "redux";
+
 import {
-  AccessTokenResponseDto,
+  AccessTokenRequestDto,
   LinkTokenResponseDto
 } from "../../services/token";
 
 export enum TokenActionTypes {
-  STOP_LOADING = "@token/STOP_LOADING",
   TOKEN_ERROR = "@@token/ERROR",
   GET_LINK_TOKEN = "@@token/GET_LINK_TOKEN",
+  GET_LINK_TOKEN_SUCCESS = "@@token/GET_LINK_TOKEN_SUCCESS",
   GET_ACCESS_TOKEN = "@@token/GET_ACCESS_TOKEN",
-  GET_LINK_TOKEN_SUCCESS = "@@token/GET_LINK_TOKEN_SUCCESS"
+  GET_ACCESS_TOKEN_SUCCESS = "@@token/GET_ACCESS_TOKEN_SUCCESS"
 }
+
+interface GetAccessToken extends Action {
+  type: TokenActionTypes.GET_ACCESS_TOKEN;
+  payload: AccessTokenRequestDto;
+}
+
+export const getAccessToken: ActionCreator<GetAccessToken> = (
+  token: string
+) => {
+  return {
+    type: TokenActionTypes.GET_ACCESS_TOKEN,
+    payload: { publicToken: token }
+  };
+};
+
+interface GetAccessTokenSuccess extends Action {
+  type: TokenActionTypes.GET_ACCESS_TOKEN_SUCCESS;
+}
+
+export const getAccessTokenSuccess: ActionCreator<GetAccessTokenSuccess> = () => {
+  return {
+    type: TokenActionTypes.GET_ACCESS_TOKEN_SUCCESS
+  };
+};
 
 interface GetLinkToken extends Action {
   type: TokenActionTypes.GET_LINK_TOKEN;
@@ -50,4 +75,9 @@ export const getLinkTokenSuccess: ActionCreator<GetLinkTokenSuccess> = (
   };
 };
 
-export type TokenActions = GetLinkToken | GetLinkTokenSuccess | TokenError;
+export type TokenActions =
+  | GetLinkToken
+  | GetLinkTokenSuccess
+  | TokenError
+  | GetAccessToken
+  | GetAccessTokenSuccess;

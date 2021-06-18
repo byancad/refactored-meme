@@ -4,7 +4,7 @@ import { TokenActions, TokenActionTypes } from "./actions";
 export interface TokenInitialState {
   linkToken: string;
   loading: boolean;
-  error?: Error;
+  error: Error | undefined;
 }
 
 export const tokenInitialState: TokenInitialState = {
@@ -21,8 +21,7 @@ export const tokenReducer: Reducer<TokenInitialState, TokenActions> = (
     case TokenActionTypes.GET_LINK_TOKEN:
       return {
         ...state,
-        loading: true,
-        error: undefined
+        loading: true
       };
     case TokenActionTypes.TOKEN_ERROR:
       return {
@@ -35,6 +34,17 @@ export const tokenReducer: Reducer<TokenInitialState, TokenActions> = (
         ...state,
         loading: false,
         linkToken: action.payload.link_token
+      };
+    case TokenActionTypes.GET_ACCESS_TOKEN:
+      return {
+        ...state,
+        loading: true,
+        error: undefined
+      };
+    case TokenActionTypes.GET_ACCESS_TOKEN_SUCCESS:
+      return {
+        ...state,
+        loading: false
       };
     default: {
       return state;
