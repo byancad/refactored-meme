@@ -25,7 +25,7 @@ export async function postLinkToken(): Promise<LinkTokenResponseDto> {
 
 export async function postAccessToken(
   tokenData: AccessTokenRequestDto
-): Promise<AccessTokenResponseDto> {
-  const response = await axiosConfig.post("/token/access-token", tokenData);
-  return response.data;
+): Promise<void> {
+  await axiosConfig.post("/token/access-token", tokenData);
+  return;
 }
