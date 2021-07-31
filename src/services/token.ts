@@ -29,3 +29,13 @@ export async function postAccessToken(
   await axiosConfig.post("/token/access-token", tokenData);
   return;
 }
+
+export async function getAccounts() {
+  const response = await axiosConfig.get("/token/accounts");
+  return response.data;
+}
+
+export async function getTransactions() {
+  const response = await axiosConfig.get("/token/transactions");
+  return response.data;
+}
